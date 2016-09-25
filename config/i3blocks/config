@@ -6,7 +6,8 @@ color=#ebdbb2
 [keymap]
 label=kbd:
 command=xkb-switch
-interval=1
+interval=once
+signal=11
 
 [separator]
 
@@ -14,7 +15,7 @@ interval=1
 label=vol:
 command=amixer get Master | grep -E -o '[0-9]{1,3}?%' | head -1
 interval=once
-signal=2
+signal=12
 
 [separator]
 
@@ -25,19 +26,19 @@ interval=30
 
 [separator]
 
-[wireless]
-label=net:
-command=$HOME/.config/i3blocks/scripts/network
-interval=10
+#[wireless]
+#label=net:
+#command=$HOME/.config/i3blocks/scripts/network
+#interval=10
 
-[separator]
+#[separator]
 
-[battery]
-label=pow:
-command=$HOME/.config/i3blocks/scripts/battery
-interval=60
+#[battery]
+#label=pow:
+#command=$HOME/.config/i3blocks/scripts/battery
+#interval=60
 
-[separator]
+#[separator]
 
 [time]
 command=date '+%a %d %b - %H:%M'

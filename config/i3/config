@@ -167,6 +167,13 @@ new_window none
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 
+# Control
+bindsym $mod+shift+plus    exec --no-startup-id amixer -D pulse sset Master 5%+ && pkill -RTMIN+12 i3blocks
+bindsym $mod+shift+minus   exec --no-startup-id amixer -D pulse sset Master 5%- && pkill -RTMIN+12 i3blocks
+#bindsym $mod+shift+plus   exec --no-startup-id pactl set-sink-volume 1 +5%
+#bindsym $mod+shift+minus  exec --no-startup-id pactl set-sink-volume 1 -5%
+
+bindsym ISO_Next_Group exec pkill -RTMIN+11 i3blocks
 
 bar {
   position top
@@ -187,8 +194,8 @@ bar {
 
 # AUTOSTART
 
-exec_always --no-startup-id feh --bg-fill $HOME/Pictures/fpmod.png
+exec_always --no-startup-id feh --bg-fill $HOME/.config/i3/wallpapers/fpmod.png
 exec  xcompmgr &
 exec --no-startup-id udiskie &
-exec --no-startup-id xautolock -time 5 -locker "i3lock -i '/home/freyr/Pictures/fp.png'" &
+exec --no-startup-id xautolock -time 5 -locker "i3lock -i '/home/freyr/.config/i3/wallpapers/fp.png'" &
 #xrandr --output HDMI1 --auto --left-of eDP1
