@@ -22,14 +22,12 @@ bindkey -v
 WHOAMI=`whoami`
 PROMPT="$WHOAMI:%~# "
 
-#PROMPT="debian:%~# " 
-#aliases
-
 #alias su='su -'
-alias steam='SDL_AUDIODRIVER=alsa steam'
-export PATH=$PATH:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/home/freyr/.bin:/home/freyr/.cargo/bin
+export PATH=$PATH:/.local/bin
 
 # OPAM configuration
 . /home/freyr/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 export LS_COLORS=
-export CHICKEN_REPOSITORY=~/.local/share/chicken/8/
+
+export GOPATH=~/.local/share/go
+export GOBIN=~/.local/bin
