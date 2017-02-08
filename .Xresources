@@ -13,15 +13,15 @@ URxvt.highlightSelection:  true
 URxvt.loginShell:          true
 URxvt.termName:            xterm-256color
 URxvt.letterSpace:         -1
-URxvt.font: xft:Fira Mono:pixelsize=18,style=regular
-URxvt.boldFont: xft:Fira Mono:pixelsize=18,style=bold
+URxvt.font: xft:Go Mono:pixelsize=18,style=regular
+URxvt.boldFont: xft:Go Mono:pixelsize=18,style=bold
 URxvt.iso14755: false
 URxvt.transparent:   true
 URxvt.shading:       20
 
 ! rofi
 rofi.modi: run
-rofi.font: Fira Mono regular 12
+rofi.font: Go Mono regular 12
 rofi.width: 100
 rofi.lines: 8
 rofi.columns: 1
@@ -36,30 +36,44 @@ rofi.padding: 300
 rofi.fuzzy: true
 rofi.terminal: urxvt
 
-! === gruvbox color scheme ===
-*background: #282828
-*foreground: #ebdbb2
-! Black + DarkGrey
-*color0:  #282828
-*color8:  #928374
-! DarkRed + Red
-*color1:  #cc241d
-*color9:  #fb4934
-! DarkGreen + Green
-*color2:  #98971a
-*color10: #b8bb26
-! DarkYellow + Yellow
-*color3:  #d79921
-*color11: #fabd2f
-! DarkBlue + Blue
-*color4:  #458588
-*color12: #83a598
-! DarkMagenta + Magenta
-*color5:  #b16286
-*color13: #d3869b
-! DarkCyan + Cyan
-*color6:  #689d6a
-*color14: #8ec07c
-! LightGrey + White
-*color7:  #a89984
-*color15: #ebdbb2
+! Colors {{{
+
+! special
+*foreground:   #f0f0f0
+*background:   #232c33
+*cursorColor:  #f0f0f0
+
+! black
+! Second black is grey
+*color0:       #232c33
+*color8:       #70838c
+
+! red
+*color1:       #99736e
+*color9:       #99736e
+
+! green
+*color2:       #78a090
+*color10:      #78a090
+
+! yellow
+*color3:       #bfb7a1
+*color11:      #bfb7a1
+
+! blue
+*color4:       #7c9fa6
+*color12:      #7c9fa6
+
+! magenta
+*color5:       #BF9C86
+*color13:      #BF9C86
+
+! cyan
+*color6:       #99BFBA
+*color14:      #99BFBA
+
+! white
+*color7:       #f0f0f0
+*color15:      #f0f0f0
+
+! }}}
