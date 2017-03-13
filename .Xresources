@@ -16,7 +16,6 @@ URxvt.letterSpace:         -1
 URxvt.font: xft:Go Mono:pixelsize=18,style=regular
 URxvt.boldFont: xft:Go Mono:pixelsize=18,style=bold
 URxvt.iso14755: false
-URxvt.transparent:   true
 URxvt.shading:       20
 
 ! rofi
