@@ -151,13 +151,13 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # class                 border  backgr. text indicator child_border
-client.focused          $bg     $bg     $fg  $bg       $bg
-client.focused_inactive $bg     $bg     $fg  $bg       $bg
-client.unfocused        $bg     $bg     $fg  $bg       $bg
-client.urgent           $bg     $bg     $fg  $bg       $bg
-client.placeholder      $bg     $bg     $fg  $bg       $bg
+client.focused          #232c33 #70838c #f0f0f0 #f0f0f0 #f0f0f0
+client.focused_inactive #70838c #70838c #f0f0f0 #f0f0f0 #f0f0f0
+client.unfocused        #70838c #232c33 #f0f0f0 #f0f0f0 #f0f0f0
+#client.urgent           $bg     $bg     $fg  $bg       $bg
+#client.placeholder      $bg     $bg     $fg  $bg       $bg
 
-client.background $bg
+#client.background $bg
 
 #for_window [class="^.*"] border pixel 1
 #new_window 1pixel
@@ -174,16 +174,24 @@ bindsym $mod+shift+minus   exec --no-startup-id amixer -D pulse sset Master 5%-
 
 bindsym ISO_Next_Group exec killall -s USR1 i3status
 
+smart_gaps on
+gaps inner 10
+
 bar {
-  position top
-  status_command ~/.local/bin/i3status.sh
-  i3bar_command i3bar
+	position top
+	status_command ~/.local/bin/i3status.sh
+	i3bar_command i3bar
+	separator_symbol >>=
+	colors {
+		background #232c33
+	}
 }
 
 # AUTOSTART
 
 exec_always --no-startup-id feh --bg-fill $HOME/.config/i3/wallpapers/fp.png
-exec  xcompmgr &
+exec  compton --vsync drm --backend glx --xrender-sync --xrender-sync-fence &
+exec  xinput set-prop 14 275 1 #tap to click
 exec --no-startup-id udiskie &
 exec --no-startup-id xautolock -time 5 -locker "i3lock -i '/home/freyr/.config/i3/wallpapers/fp.png'" &
 #xrandr --output HDMI1 --auto --left-of eDP1
