@@ -31,7 +31,7 @@ font pango:Go Mono bold 12
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec urxvt
+bindsym $mod+Return exec roxterm
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -187,10 +187,13 @@ bar {
 	}
 }
 
+bindsym $mod+shift+s exec surf
+bindsym $mod+m exec xsel -o | awk '{print $1}' | xargs mpv
+
 # AUTOSTART
 
 exec_always --no-startup-id feh --bg-fill $HOME/.config/i3/wallpapers/fp.png
-exec  compton --vsync drm --backend glx --xrender-sync --xrender-sync-fence &
+exec  compton --vsync drm --backend glx  &
 exec  xinput set-prop 14 275 1 #tap to click
 exec --no-startup-id udiskie &
 exec --no-startup-id xautolock -time 5 -locker "i3lock -i '/home/freyr/.config/i3/wallpapers/fp.png'" &
