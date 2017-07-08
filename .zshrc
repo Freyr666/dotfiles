@@ -23,11 +23,9 @@ WHOAMI=`whoami`
 PROMPT="$WHOAMI:%~# "
 
 #alias su='su -'
-export PATH=$PATH:/.local/bin
+export PATH=$HOME/.local/bin:$PATH
+export PATH=$HOME/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin:$PATH
 
 # OPAM configuration
 . /home/freyr/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 export LS_COLORS=
-
-export GOPATH=~/.local/share/go
-export GOBIN=~/.local/bin
