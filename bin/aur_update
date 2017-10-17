@@ -1,0 +1,42 @@
+#!/usr/bin/env sh
+
+ROOT=$(pwd)
+PKG=""
+RECOMPILE=false
+
+for i in "$@"
+do
+    case "$i" in
+        -u)
+            RECOMPILE=true
+            shift
+            ;;
+        *)
+            # unknown option
+            PKG="$i"
+            ;;
+    esac
+done
+
+function update {
+
+    cd "$ROOT/$1"
+    git pull
+    
+    if [ "$2" = true ]
+    then
+        rm *pkg.tar.xz
+    fi
+
+    makepkg -sic
+    cd "$ROOT"
+}
+
+if [ -z "$PKG" ]
+then
+    echo "usage: $0 [opt] dir"
+    echo "\t-u\trecompile"
+    exit -1
+else
+    update $PKG $RECOMPILE
+fi
