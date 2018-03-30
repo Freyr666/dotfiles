@@ -30,13 +30,13 @@ font pango:Go Mono bold 12
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec urxvt
+bindsym $mod+Return exec termi
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run -fn 'Go Mono-12' -nf ""#f0f0f0 -sb "#232c33"
+bindsym $mod+d exec WAYLAND_DISPLAY=0 dmenu_run -fn 'Fira Mono-12' -nf ""#f0f0f0 -sb "#232c33"
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -161,13 +161,16 @@ new_window none
 # finds out, if available)
 
 # Control
-bindsym $mod+Shift+up     exec --no-startup-id amixer -D pulse sset Master 5%+ 
-bindsym $mod+Shift+down   exec --no-startup-id amixer -D pulse sset Master 5%-
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse sset Master 5%+
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer -D pulse sset Master 5%-
+#bindsym $mod+Shift+up     exec --no-startup-id amixer -D pulse sset Master 5%+ 
+#bindsym $mod+Shift+down   exec --no-startup-id amixer -D pulse sset Master 5%-
 
 bindsym ISO_Next_Group exec killall -s USR1 i3status
 
 bar {
   	position top
+	tray_output all
   	status_command i3status
   	swaybar_command swaybar
 	separator_symbol >>=
@@ -177,7 +180,7 @@ bar {
 }
 
 ### Input configuration
-input "2:14:ETPS/2_Elantech_Touchpad" {
+input "1739:32382:DELL0740:00_06CB:7E7E_To" {
        dwt enabled
        tap enabled
        natural_scroll enabled
@@ -186,10 +189,13 @@ input "2:14:ETPS/2_Elantech_Touchpad" {
 
 output * bg $HOME/.config/i3/wallpapers/fp.png fit
 
+smart_gaps on
 gaps inner 10
-#gaps outer 10
+gaps outer 4
+
+bindsym $mod+Shift+l exec swaylock -i '/home/freyr/.config/i3/wallpapers/fp.png'
 
 # AUTOSTART
-exec xrdb $HOME/.Xresources
+#exec xrdb $HOME/.Xresources
 exec --no-startup-id udiskie &
 #exec --no-startup-id xautolock -time 5 -locker "i3lock -i '/home/freyr/.config/i3/wallpapers/fp.png'" &
