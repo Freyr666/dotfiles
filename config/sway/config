@@ -13,7 +13,7 @@ set $mod Mod4
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 #font pango:CPMono_v07 Plain 12
-font pango:Go Mono bold 12
+#font pango:Fira Mono bold 12
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -27,16 +27,16 @@ font pango:Go Mono bold 12
 # font, it doesn’t scale on retina/hidpi displays.
 
 # Use Mouse+$mod to drag floating windows to their wanted position
-floating_modifier $mod
+#floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec termi
+bindsym $mod+Return exec gnome-terminal #alacritty #termi
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec WAYLAND_DISPLAY=0 dmenu_run -fn 'Fira Mono-12' -nf ""#f0f0f0 -sb "#232c33"
+bindsym $mod+d exec dmenu_run -fn 'Fira Mono 14' -nf "#f0f0f0" -sb "#232c33" #--tf "#f1f1f1" --hf "#f0f0f0" --hb "#232c33"
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -155,7 +155,9 @@ client.unfocused        #70838c #232c33 #f0f0f0 #f0f0f0 #f0f0f0
 
 #for_window [class="^.*"] border pixel 1
 #new_window 1pixel
-new_window none
+#new_window none
+default_border none
+
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
@@ -168,9 +170,10 @@ bindsym XF86AudioLowerVolume exec --no-startup-id amixer -D pulse sset Master 5%
 
 bindsym ISO_Next_Group exec killall -s USR1 i3status
 
+	#tray_output all
 bar {
   	position top
-	tray_output all
+        font "Fira Mono bold 14"
   	status_command i3status
   	swaybar_command swaybar
 	separator_symbol >>=
@@ -180,18 +183,20 @@ bar {
 }
 
 ### Input configuration
-input "1739:32382:DELL0740:00_06CB:7E7E_To" {
+input "1739:32382:DELL0740:00_06CB:7E7E_Touchpad" {
        dwt enabled
        tap enabled
        natural_scroll enabled
        middle_emulation enabled
 }
 
+#gaps inner 5
+#gaps edge_gaps on
+#smart_gaps on
+
 output * bg $HOME/.config/i3/wallpapers/fp.png fit
 
-smart_gaps on
-gaps inner 10
-gaps outer 4
+#output eDP-1 scale 1.2
 
 bindsym $mod+Shift+l exec swaylock -i '/home/freyr/.config/i3/wallpapers/fp.png'
 
@@ -199,3 +204,7 @@ bindsym $mod+Shift+l exec swaylock -i '/home/freyr/.config/i3/wallpapers/fp.png'
 #exec xrdb $HOME/.Xresources
 exec --no-startup-id udiskie &
 #exec --no-startup-id xautolock -time 5 -locker "i3lock -i '/home/freyr/.config/i3/wallpapers/fp.png'" &
+exec --no-startup-id swayidle \
+     timeout 600 'swaymsg "output * dpms off"' \
+             resume 'swaymsg "output * dpms on"' \
+     before-sleep 'swaylock -i $HOME/.config/i3/wallpapers/fp.png'
