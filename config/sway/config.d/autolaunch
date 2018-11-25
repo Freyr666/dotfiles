@@ -1,0 +1,6 @@
+#exec xrdb $HOME/.Xresources
+exec --no-startup-id udiskie &
+exec --no-startup-id swayidle \
+     timeout 600 'swaymsg "output * dpms off"' \
+             resume 'swaymsg "output * dpms on"' \
+     before-sleep 'swaylock -i $WALLPAPER'

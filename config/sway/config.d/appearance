@@ -1,0 +1,33 @@
+font pango:Fira Mono bold 16
+
+# class                 border  backgr. text indicator child_border
+client.focused          #232c33 #70838c #f0f0f0 #f0f0f0 #f0f0f0
+client.focused_inactive #70838c #70838c #f0f0f0 #f0f0f0 #f0f0f0
+client.unfocused        #70838c #232c33 #f0f0f0 #f0f0f0 #f0f0f0
+#client.urgent           $bg     $bg     $fg  $bg       $bg
+#client.placeholder      $bg     $bg     $fg  $bg       $bg
+
+#client.background $bg
+
+# Remove windows' borders
+default_border none
+
+#tray_output all
+bar {
+  	position top
+        font "Fira Mono bold 16"
+  	status_command i3status
+  	swaybar_command swaybar
+	separator_symbol >>=
+	colors {
+  		background #232c33
+	}
+}
+
+gaps inner 5
+#gaps edge_gaps on
+smart_gaps on
+
+output * bg $WALLPAPER fit
+
+#output eDP-1 scale 1.2
